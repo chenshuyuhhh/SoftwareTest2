@@ -39,6 +39,7 @@ public class Money {
             // at this time only the last number of num is important
             // because 10+5+5=20, 10=10
             num = num % 10; // use this method to get the last number of num
+            // only has three 1, so num cannot be 4 or 9
             return num != 4 && num != 9;
         }
         return result;

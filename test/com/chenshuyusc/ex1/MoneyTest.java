@@ -1,16 +1,16 @@
 package com.chenshuyusc.ex1;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+        import org.junit.Assert;
+        import org.junit.Test;
+        import org.junit.Before;
+        import org.junit.After;
+        import org.junit.runner.RunWith;
+        import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Set;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.Collection;
+        import java.util.Set;
 
 /**
  * Money Tester.
