@@ -224,7 +224,7 @@ public class TestPara{
 
 > 必须要有初始节点和终止节点，测试路径必须从**初始**节点出发到**终止**节点结束
 >
-> 测试路径和测试是一对多？？？
+> 测试路径和测试用例是一对多
 
 ![image-20200304112623002](pic/4-1.png)
 
@@ -279,7 +279,7 @@ NC & EC & EPC
 
 【3月9日周一】
 
-Chapter4：图覆盖
+Chapter4：图覆盖 Graph Coverage
 
 数据流准则：定义def & 使用use
 
@@ -301,12 +301,144 @@ Chapter4：图覆盖
 
 
 
-Chapter5：逻辑覆盖
+Chapter5：逻辑覆盖 Logic Coverage
 
 谓词：a predicate is an expression that evaluates to a boolean value
 
 条件覆盖 & 判定覆盖 & 条件判定覆盖组合，重点是modified condition/decision coverage(MC/DC)
 
+* Decision：Branching expression of the **if/while/for** statements
+
+  又称branch coverage，即覆盖每个分支
+
+* Condition：A Boolean expression **containing no Boolean operators**.If the same expression appears more than once in a decision, each occurrence is considered a **distinct** condition. 
+
+Condition cover 和 Decision cover 互不蕴含
+
+* Multiple Condition Coverage：Cover all possible **combinations** of conditions
+* MC/DC：MCC的改进。每个子句的取值能独立的影响结果。
+
+| C1    | C2    | C     |      |
+| ----- | ----- | ----- | ---- |
+| true  | true  | true  | t1   |
+| true  | false | false | t2   |
+| false | true  | false | t3   |
+
+> C1 and C2，t1 and t2 cover C2，t1 and t3 cover C1
 
 
-【3月xx日周三】
+
+【3月11日周三】
+
+图覆盖和逻辑覆盖都是基于代码的，白盒测试
+
+Chapter6: Blackbox Testing
+
+single & combination
+
+* Single
+
+Equivalent Class Partitioning (ECP)  等价类划分
+
+> 等价类：引起程序相似的反应，要既考虑合法输入也要考虑非法输入（无效等价类）
+>
+> 特殊值：empty、null、very long、special value
+
+Boundary Value Analysis：extension of ECP
+
+* Multiple input parameter
+
+判定表（decision table）
+
+![image-20200326212237526](/Users/chenshuyu/Library/Application Support/typora-user-images/image-20200326212237526.png)
+
+> 此表可合并
+
+
+
+【3月16日周一】
+
+Cause-Effect Graph （CEG 因果图法）
+
+条件和条件之间的关系，结果和结果之间的关系要标清楚：**Identical、与And、或Or、非Not**
+
+* E（互斥）a and b can not be 1 at the same time 
+* I（包含）One of a、b and c must be 1 at leastThey can’t be 0 at the same time
+* O（唯一）Only one of a and b is 1 and must one of them is 1 
+* M（强制）If the result of a is 1 then b must be 0 
+* R（要求）If a is 1 then b must be 1
+
+![image-20200316154751655](pic/6-2.png)
+
+两两组合（pairwise）
+
+
+
+【3月18日周三】
+
+Chapter7: Test Automation and Selenium
+
+Steps of creating a test case by Selenium IDE: 
+
+* Record
+* Base URL
+* A sequence of actions
+
+Find web elements by **webdriver**：
+
+`ID` `Name` `Xpath` `Class Name` `Link Test`
+
+
+
+Chapter8: Test Driven Development, Integration, Testing, Stub and Mock
+
+MVC: Model Service Dao Util
+
+> 删除测试的时候，应当先add再delete，保证测试执行前后**无损**的
+
+
+
+【3月25日 周三】
+
+集成测试：将两个和多个模块合并在一起
+
+Stub：被调用 —— **自顶向下集成** （A调用B，要测试A，但是B没写好）
+
+Driver：调用 —— **自底向上集成**（A调用B，要测试B，但是A没写好）
+
+**三明治集成**（stub & driver）
+
+单元测试 & 集成测试
+
+* 访问了数据
+* 有网络通讯
+* 访问了文件系统
+* 不与其他任何单元测试同时进行
+* 必须配置好环境后才能运行
+
+> 原因：会使单元测试速度降低
+>
+> 上述情况更应归为集成测试
+
+Stub（状态） & Mock（交互）
+
+> 比如在Stub中load了两次，但是因为只关心返回值，所以测试并不会报错，所以需要用Mock来透露交互信息
+
+Mock：
+
+- Record 创建Mock对象并给出Mock对象的一系列期望
+- Replay 测试重放
+- Verify 验证交互是否满足要求
+
+
+
+【x月xx日 周三】
+
+Chapter9: Performance Testing and Jmeter
+
+Performance Testing 性能测试
+
+Load Testing 负载测试
+
+Stress Testing 压力测试（峰值）
+
